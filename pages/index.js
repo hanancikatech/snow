@@ -7,18 +7,22 @@ export default function Home() {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    setAudio(new Audio("/audio.mp3"));
+    const settleAudio = () => setAudio(new Audio("/audio.mp3"));
+    settleAudio();
   }, []);
 
-  useEffect(async () => {
-    audio?.play();
-  });
+  useEffect(() => {
+    const playAudio = async () => {
+      await audio?.play();
+    };
+    playAudio();
+  }, [audio]);
 
   return (
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Pushster&display=swap"
           rel="stylesheet"
